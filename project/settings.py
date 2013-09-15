@@ -1,6 +1,7 @@
 # Django settings for testerslab project.
 import os.path
 
+SITE_ROOT = os.path.dirname(__file__.decode('utf-8'))
 PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 
 DEBUG = False
@@ -164,6 +165,3 @@ CKEDITOR_CONFIGS = {
                 'toolbar': 'Full',
             },
 }
-
-import dj_database_url
-DATABASES['default'] =  dj_database_url.config()

@@ -9,6 +9,13 @@ from blog.models import UserProfile
 class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
 
+def make_published(modeladmin, request, queryset):
+    queryset.update(published = True)
+make_published.short_description = "Publish"
+
+def make_unpublished(modeladmin, request, queryset):
+    queryset.update(published = False)
+make_unpublished.short_description = "Unpublish"
 
 class PostAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
@@ -16,6 +23,7 @@ class PostAdmin(admin.ModelAdmin):
     list_filter = ['created', 'categories']
     search_fields = ['title']
     date_hierarchy = 'created'
+    actions = [make_published, make_unpublished]
 
 
 class QuickLinkAdmin(admin.ModelAdmin):

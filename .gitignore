@@ -2,3 +2,4 @@
 *.pot
 *.pyc
 blog.db
+.idea/*

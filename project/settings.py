@@ -165,3 +165,10 @@ CKEDITOR_CONFIGS = {
                 'toolbar': 'Full',
             },
 }
+
+# Import settings_dev file
+try:
+    from settings_dev import *
+    print "Using settings_dev."
+except ImportError, exp:
+    print "Error importing settings_dev, using standard settings"

@@ -1,6 +1,7 @@
 # Django settings for testerslab project.
 import os.path
 
+SITE_ROOT = os.path.dirname(__file__.decode('utf-8'))
 PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 
 DEBUG = False
@@ -165,5 +166,9 @@ CKEDITOR_CONFIGS = {
             },
 }
 
-import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
+# Import settings_dev file
+try:
+    from settings_dev import *
+    print "Using settings_dev."
+except ImportError, exp:
+    print "Error importing settings_dev, using standard settings"
